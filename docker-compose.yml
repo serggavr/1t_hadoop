@@ -58,7 +58,7 @@ services:
   huedb:
     image: postgres:12.1-alpine
     volumes:
-      - pg_data:/var/lib/postgresl/data/
+      - pg_data:/var/lib/postgresql/data/
     ports:
       - "5432"
     env_file:
@@ -67,7 +67,7 @@ services:
         SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432 resourcemanager:8088 hive-metastore:9083"
   
   hue:
-    image: gethue/hue:4.6.0
+    image: gethue/hue:latest
     environment:
         SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432 resourcemanager:8088 hive-metastore:9083 huedb:5000"
     ports:
